@@ -1,5 +1,10 @@
 package no.nav.helsearbeidsgiver
 
+import com.typesafe.config.ConfigFactory
+import io.ktor.server.config.HoconApplicationConfig
+
+private val appConfig = HoconApplicationConfig(ConfigFactory.load())
+
 object Env {
     object Unleash {
         val apiKey = "UNLEASH_SERVER_API_TOKEN".fromEnv()
@@ -17,5 +22,6 @@ object Env {
 
     fun String.fromEnv(): String =
         System.getenv(this)
+            ?: appConfig.propertyOrNull(this)?.getString()
             ?: throw RuntimeException("Missing required environment variable \"$this\".")
 }
