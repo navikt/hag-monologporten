@@ -1,4 +1,4 @@
-# hag-monologporten
+# hag-dialog
 Oppretter og oppdaterer sykepengedialoger til arbeidsgivere i Dialogporten.
 
 # Henvendelser

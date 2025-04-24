@@ -16,6 +16,7 @@ fun startServer() {
     sikkerLogger.info("Setter opp Unleash...")
     val unleashFeatureToggles = UnleashFeatureToggles()
 
+    sikkerLogger.info("Starter server...")
     embeddedServer(
         factory = Netty,
         port = 8080,

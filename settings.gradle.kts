@@ -1,4 +1,4 @@
-rootProject.name = "monologporten"
+rootProject.name = "dialog"
 
 pluginManagement {
     val kotlinVersion: String by settings

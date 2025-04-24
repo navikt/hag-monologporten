@@ -13,8 +13,8 @@ class UnleashFeatureToggles {
         DefaultUnleash(
             UnleashConfig
                 .builder()
-                .appName("sykepenger-im-lps-api")
-                .instanceId("sykepenger-im-lps-api")
+                .appName("hag-dialog")
+                .instanceId("hag-dialog")
                 .unleashAPI(apiUrl)
                 .apiKey(apiKey)
                 .environment(apiEnv)
