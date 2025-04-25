@@ -15,9 +15,10 @@ fun startKafkaConsumer(unleashFeatureToggles: UnleashFeatureToggles) {
         val records = consumer.poll(Duration.ofMillis(1000))
         for (record in records) {
             sikkerLogger().info("Consumed message: ${record.value()} from partition: ${record.partition()}")
-            sikkerLogger().info("Unleash feature toggle for dialogopprettelse: ${unleashFeatureToggles.skalOppretteDialogVedMottattSykmelding()}")
+            sikkerLogger().info(
+                "Unleash feature toggle for dialogopprettelse: ${unleashFeatureToggles.skalOppretteDialogVedMottattSykmelding()}",
+            )
             consumer.commitSync()
         }
     }
 }
-

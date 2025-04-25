@@ -1,0 +1,58 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+
+metadata:
+  labels:
+    team: helsearbeidsgiver
+  name: dialog
+  namespace: helsearbeidsgiver
+  annotations:
+    texas.nais.io/enabled: "true"
+spec:
+  replicas:
+    max: 1
+    min: 1
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "512Mi"
+    limits:
+      memory: "1024Mi"
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: java
+  prometheus:
+    enabled: true
+    path: /metrics
+  secureLogs:
+    enabled: true
+  kafka:
+    pool: nav-dev
+  image: {{image}}
+  port: 8080
+  accessPolicy:
+    outbound:
+      external:
+        - host: platform.tt02.altinn.no
+        - host: helsearbeidsgiver-unleash-api.nav.cloud.nais.io
+  maskinporten:
+    enabled: true
+    scopes:
+      consumes:
+        - name: "digdir:dialogporten.serviceprovider"
+  azure:
+    application:
+      enabled: true
+  envFrom:
+    - secret: dialog-unleash-api-token
+  env:
+    - name: ALTINN_3_BASE_URL
+      value: "https://platform.tt02.altinn.no"
+    - name: ALTINN_IM_RESSURS
+      value: "nav_sykepenger_inntektsmelding-nedlasting"
+    - name: DIALOGPORTEN_SCOPE
+      value: "digdir:dialogporten.serviceprovider"
+    - name: NAV_ARBEIDSGIVER_API_BASEURL
+      value: "https://sykepenger-im-lps-api.ekstern.dev.nav.no"
+
