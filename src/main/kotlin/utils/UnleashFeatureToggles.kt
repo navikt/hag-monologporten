@@ -13,8 +13,8 @@ class UnleashFeatureToggles {
         DefaultUnleash(
             UnleashConfig
                 .builder()
-                .appName("hag-dialog")
-                .instanceId("hag-dialog")
+                .appName("dialog")
+                .instanceId("dialog")
                 .unleashAPI(apiUrl)
                 .apiKey(apiKey)
                 .environment(apiEnv)
