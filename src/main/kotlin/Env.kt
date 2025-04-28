@@ -15,9 +15,9 @@ object Env {
     object Kafka {
         val topic = "DIALOG_KAFKA_TOPIC".fromEnv()
         val kafkaBrokers = "KAFKA_BROKERS".fromEnv()
-        val kafkaCredstorePath = "KAFKA_CREDSTORE_PATH".fromEnv()
-        val kafkaKeystorePath = "KAFKA_KEYSTORE_PATH".fromEnv()
+        val kafkaTruststorePath = "KAFKA_TRUSTSTORE_PATH".fromEnv()
         val kafkaCredstorePassword = "KAFKA_CREDSTORE_PASSWORD".fromEnv()
+        val kafkaKeystorePath = "KAFKA_KEYSTORE_PATH".fromEnv()
     }
 
     fun String.fromEnv(): String =

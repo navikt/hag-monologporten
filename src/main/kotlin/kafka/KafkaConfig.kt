@@ -30,7 +30,7 @@ private fun commonKafkaProperties(): Map<String, String> {
 
     val truststoreConfig =
         Env
-            .Kafka.kafkaKeystorePath
+            .Kafka.kafkaTruststorePath
             .let {
                 mapOf(
                     SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG to it,
@@ -54,7 +54,7 @@ private fun commonKafkaProperties(): Map<String, String> {
 
     val keystoreConfig =
         Env
-            .Kafka.kafkaCredstorePath
+            .Kafka.kafkaKeystorePath
             .let {
                 mapOf(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG to it)
             }
