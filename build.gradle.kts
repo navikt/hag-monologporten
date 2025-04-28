@@ -40,7 +40,11 @@ dependencies {
     val kotestVersion: String by project
     val unleashVersion: String by project
     val kafkaVersion: String by project
+    val logbackVersion: String by project
+    val logbackEncoderVersion: String by project
 
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation("net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion")
     implementation("no.nav.helsearbeidsgiver:utils:$utilsVersion")
     implementation("io.getunleash:unleash-client-java:$unleashVersion")
     implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
