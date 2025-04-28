@@ -13,7 +13,7 @@ object Env {
     }
 
     object Kafka {
-        val topic = "KAFKA_TOPIC".fromEnv()
+        val topic = "DIALOG_KAFKA_TOPIC".fromEnv()
         val kafkaBrokers = "KAFKA_BROKERS".fromEnv()
         val kafkaCredstorePath = "KAFKA_CREDSTORE_PATH".fromEnv()
         val kafkaKeystorePath = "KAFKA_KEYSTORE_PATH".fromEnv()

@@ -54,4 +54,6 @@ spec:
       value: "digdir:dialogporten.serviceprovider"
     - name: NAV_ARBEIDSGIVER_API_BASEURL
       value: "https://sykepenger-im-lps-api.ekstern.dev.nav.no"
+    - name: DIALOG_KAFKA_TOPIC
+      value: helsearbeidsgiver.dialog
 
