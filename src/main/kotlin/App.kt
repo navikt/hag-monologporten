@@ -16,7 +16,7 @@ fun main() {
 }
 
 fun startServer() {
-    val logger = LoggerFactory.getLogger(startServer()::class.java)
+    val logger = LoggerFactory.getLogger("App")
 
     logger.info("Setter opp Unleash...")
     val unleashFeatureToggles = UnleashFeatureToggles()
