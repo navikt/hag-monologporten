@@ -1,6 +1,5 @@
 package no.nav.helsearbeidsgiver.auth
 
-
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ResponseException
 import io.ktor.client.request.bearerAuth
@@ -17,27 +16,22 @@ class AuthClient {
     private val sikkerLogger = sikkerLogger()
     private val httpClient = createHttpClient()
 
-
-    fun tokenGetter(
-        target: String,
-    ): () -> String =
+    fun tokenGetter(target: String): () -> String =
         {
             runBlocking {
                 token(target).accessToken
             }
         }
 
-    internal suspend fun token(
-        target: String,
-    ): TokenResponse =
+    internal suspend fun token(target: String): TokenResponse =
         try {
             httpClient
                 .submitForm(
                     url = Env.tokenEndpoint,
                     formParameters =
                         parameters {
-                           append( "identity_provider" , "maskinporten")
-                           append("target", target)
+                            append("identity_provider", "maskinporten")
+                            append("target", target)
                         },
                 ).body()
         } catch (e: ResponseException) {
@@ -69,6 +63,5 @@ private fun AuthClient.hentAltinnToken(target: String): () -> String {
         }
     }
 }
-
 
 fun AuthClient.dialogportenTokenGetter() = hentAltinnToken(Env.dialogportenScope)

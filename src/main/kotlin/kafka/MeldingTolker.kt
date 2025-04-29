@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory
 
 class MeldingTolker(
     private val unleashFeatureToggles: UnleashFeatureToggles,
-    private val dialogportenService: DialogportenService
+    private val dialogportenService: DialogportenService,
 ) {
     private val logger = LoggerFactory.getLogger(MeldingTolker::class.java)
     private val sikkerLogger = sikkerLogger()

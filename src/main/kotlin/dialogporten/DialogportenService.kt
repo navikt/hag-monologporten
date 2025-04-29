@@ -8,9 +8,7 @@ import no.nav.helsearbeidsgiver.kafka.Sykmeldingsperiode
 class DialogportenService(
     private val dialogportenClient: DialogportenClient,
 ) {
-    fun opprettNyDialogMedSykmelding(
-        sykmelding: Sykmelding,
-    ): String =
+    fun opprettNyDialogMedSykmelding(sykmelding: Sykmelding): String =
         runBlocking {
             dialogportenClient
                 .opprettNyDialogMedSykmelding(

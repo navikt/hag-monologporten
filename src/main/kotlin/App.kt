@@ -23,11 +23,12 @@ fun startServer() {
     val authClient = AuthClient()
 
     logger.info("Setter opp DialogportenService...")
-    val dialogportenClient = DialogportenClient(
-        baseUrl = Env.altinnBaseUrl,
-        ressurs = Env.altinnImRessurs,
-        getToken = authClient.dialogportenTokenGetter()
-    )
+    val dialogportenClient =
+        DialogportenClient(
+            baseUrl = Env.altinnBaseUrl,
+            ressurs = Env.altinnImRessurs,
+            getToken = authClient.dialogportenTokenGetter(),
+        )
 
     logger.info("Starter server...")
     embeddedServer(
@@ -35,10 +36,11 @@ fun startServer() {
         port = 8080,
         module = {
             startKafkaConsumer(
-                meldingTolker = MeldingTolker(
-                    unleashFeatureToggles = unleashFeatureToggles,
-                    dialogportenService = DialogportenService(dialogportenClient)
-                )
+                meldingTolker =
+                    MeldingTolker(
+                        unleashFeatureToggles = unleashFeatureToggles,
+                        dialogportenService = DialogportenService(dialogportenClient),
+                    ),
             )
         },
     ).start(wait = true)
