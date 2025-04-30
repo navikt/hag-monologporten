@@ -6,7 +6,7 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import no.nav.helsearbeidsgiver.utils.json.jsonConfig
 
-fun createHttpClient() =
+fun createHttpClient(): HttpClient =
     HttpClient(Apache5) {
         expectSuccess = true
         install(ContentNegotiation) {

@@ -14,12 +14,6 @@ internal data class TokenResponse(
 )
 
 @Serializable
-internal data class TokenIntrospectionResponse(
-    val active: Boolean,
-    val error: String? = null,
-)
-
-@Serializable
 @OptIn(ExperimentalSerializationApi::class)
 internal data class ErrorResponse(
     val error: String,

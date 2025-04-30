@@ -23,7 +23,7 @@ class AuthClient {
             }
         }
 
-    internal suspend fun token(target: String): TokenResponse =
+    private suspend fun token(target: String): TokenResponse =
         try {
             httpClient
                 .submitForm(
