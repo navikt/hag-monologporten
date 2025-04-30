@@ -36,23 +36,37 @@ repositories {
 }
 
 dependencies {
+    // Interne avhengigheter
+    val dialogportenClientVersion: String by project
     val utilsVersion: String by project
-    val kotestVersion: String by project
+    implementation("no.nav.helsearbeidsgiver:dialogporten-client:$dialogportenClientVersion")
+    implementation("no.nav.helsearbeidsgiver:utils:$utilsVersion")
+
+    // Eksterne avhengigheter
     val unleashVersion: String by project
     val kafkaVersion: String by project
     val logbackVersion: String by project
     val logbackEncoderVersion: String by project
-
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
     implementation("net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion")
-    implementation("no.nav.helsearbeidsgiver:utils:$utilsVersion")
     implementation("io.getunleash:unleash-client-java:$unleashVersion")
     implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-netty-jvm")
+    implementation("io.ktor:ktor-client-apache5")
+    implementation("io.ktor:ktor-client-content-negotiation")
+    implementation("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
 
+
+
+    // Test dependencies
+    val kotestVersion: String by project
+    val mockkVersion: String by project
+    testImplementation(testFixtures("no.nav.helsearbeidsgiver:utils:$utilsVersion"))
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
 tasks.test {
