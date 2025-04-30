@@ -8,7 +8,9 @@ import no.nav.helsearbeidsgiver.kafka.MeldingTolker
 import no.nav.helsearbeidsgiver.kafka.Sykmelding
 import no.nav.helsearbeidsgiver.kafka.Sykmeldingsperiode
 import no.nav.helsearbeidsgiver.utils.UnleashFeatureToggles
-import no.nav.helsearbeidsgiver.utils.json.jsonConfig
+import no.nav.helsearbeidsgiver.utils.json.toJson
+import no.nav.helsearbeidsgiver.utils.test.wrapper.genererGyldig
+import no.nav.helsearbeidsgiver.utils.wrapper.Orgnr
 import java.time.LocalDate
 import java.util.UUID
 
@@ -18,7 +20,7 @@ class MeldingTolkerTest :
             val sykmelding =
                 Sykmelding(
                     sykmeldingId = UUID.randomUUID(),
-                    orgnr = "123456789",
+                    orgnr = Orgnr.genererGyldig(),
                     foedselsdato = LocalDate.of(1990, 1, 1),
                     fulltNavn = "OLA NORDMANN",
                     sykmeldingsperioder =
@@ -29,7 +31,7 @@ class MeldingTolkerTest :
                             ),
                         ),
                 )
-            val melding = jsonConfig.encodeToString(Melding.serializer(), sykmelding)
+            val melding = sykmelding.toJson(Melding.serializer()).toString()
 
             val dialogportenServiceMock = mockk<DialogportenService>()
             val unleashFeatureTogglesMock = mockk<UnleashFeatureToggles>()

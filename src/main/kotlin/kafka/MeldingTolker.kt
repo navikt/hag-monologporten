@@ -2,7 +2,7 @@ package no.nav.helsearbeidsgiver.kafka
 
 import no.nav.helsearbeidsgiver.dialogporten.DialogportenService
 import no.nav.helsearbeidsgiver.utils.UnleashFeatureToggles
-import no.nav.helsearbeidsgiver.utils.json.jsonConfig
+import no.nav.helsearbeidsgiver.utils.json.fromJson
 import no.nav.helsearbeidsgiver.utils.log.sikkerLogger
 import org.slf4j.LoggerFactory
 
@@ -40,5 +40,5 @@ class MeldingTolker(
         }
     }
 
-    private fun dekodMelding(melding: String): Melding = jsonConfig.decodeFromString<Melding>(melding)
+    private fun dekodMelding(melding: String): Melding = melding.fromJson(Melding.serializer())
 }

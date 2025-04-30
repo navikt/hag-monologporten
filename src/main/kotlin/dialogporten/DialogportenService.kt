@@ -13,7 +13,7 @@ class DialogportenService(
         runBlocking {
             dialogportenClient
                 .opprettNyDialogMedSykmelding(
-                    orgnr = sykmelding.orgnr,
+                    orgnr = sykmelding.orgnr.toString(),
                     dialogTittel = "Sykepenger for ${sykmelding.fulltNavn} (f. ${sykmelding.foedselsdato.tilNorskFormat()})",
                     dialogSammendrag = sykmelding.sykmeldingsperioder.getSykmeldingsPerioderString(),
                     sykmeldingId = sykmelding.sykmeldingId,
